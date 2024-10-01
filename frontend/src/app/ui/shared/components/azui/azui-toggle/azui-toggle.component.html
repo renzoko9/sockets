@@ -1,0 +1,59 @@
+<div
+  class="flex items-center az-toggle"
+  [ngClass]="{
+    'az-toggle--active': estaActivo,
+    'az-toggle--inactive': !estaActivo,
+    'background-primary-2': estaActivo && !isDisabled,
+    'background-disabled': !estaActivo && !isDisabled,
+    'background-primary-1': estaActivo && isDisabled,
+    'background-inverse border-primary-1': !estaActivo && isDisabled,
+    'az-toggle--circular': shape === 'circular',
+    'az-toggle--rectangular': shape === 'cuadrado',
+    'az-toggle--disabled': isDisabled
+  }"
+  (click)="toggleEstado()"
+>
+  <div
+    class="az-toggle__space"
+    [ngClass]="{ 'az-toggle__space--left': !estaActivo }"
+  ></div>
+
+  <div style="min-width: 14px; height: 30px" class="flex items-center">
+    <p
+      [ngClass]="{
+      'text-primary-5': estaActivo && !isDisabled,
+      'text-subordinate': !estaActivo && !isDisabled,
+      'text-primary-3': estaActivo && isDisabled,
+      'text-disabled': !estaActivo && isDisabled,
+      }"
+    >
+      {{ estaActivo ? textoActivo : textoInactivo }}
+    </p>
+  </div>
+
+  <div
+    class="az-toggle__space"
+    [ngClass]="{ 'az-toggle__space--right': estaActivo }"
+  ></div>
+
+  <div
+    class="az-toggle__icon flex"
+    [ngClass]="{
+    'background-primary-5': estaActivo && !isDisabled,
+    'background-subordinate': !estaActivo && !isDisabled,
+    'background-primary-3': estaActivo && isDisabled,
+    'background-disabled': !estaActivo && isDisabled,
+    'br-50': shape === 'circular',
+    'br-8': shape === 'cuadrado',
+    'az-toggle__icon--active': estaActivo,
+    'az-toggle__icon--inactive': !estaActivo,
+      }"
+  >
+    <span
+      azui-icons
+      [name]="estaActivo ? iconoActivo : iconoInactivo"
+      class="m-auto text-inverse"
+      style="font-size: 14px; height: 1em"
+    ></span>
+  </div>
+</div>

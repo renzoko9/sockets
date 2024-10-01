@@ -1,0 +1,14 @@
+.azui-error-message {
+  animation: fadeInText 400ms 0ms forwards;
+}
+
+@keyframes fadeInText {
+  from {
+    transform: translateY(-12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

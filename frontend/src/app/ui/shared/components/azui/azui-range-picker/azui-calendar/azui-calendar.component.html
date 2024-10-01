@@ -1,0 +1,76 @@
+<div class="flex-column items-center">
+  <div class="flex">
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>L</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>M</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>M</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>J</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>V</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>S</p>
+    </div>
+    <div
+      class="flex items-center justify-center"
+      style="width: 36px; height: 30px"
+    >
+      <p>D</p>
+    </div>
+  </div>
+  <div class="flex" style="padding: 3px 0" *ngFor="let fechaRow of fechas">
+    <div
+      class="flex"
+      style="width: 36px; height: 24px"
+      *ngFor="let fecha of fechaRow"
+    >
+      <div style="width: 6px"></div>
+      <div
+        class="flex items-center justify-center numero-container"
+        style="cursor: pointer"
+        [ngClass]="{
+          'border-primary-5': fecha.esHoy,
+          'border-izquierda': !esDerecho && !fecha.esHoy,
+          'border-derecha': esDerecho && !fecha.esHoy,
+          'background-primary-5': fecha.estaSeleccionado
+        }"
+        (click)="seleccionarFecha(fecha)"
+      >
+        <p
+          [ngClass]="{
+            'text-subordinate': !fecha.estaEnElMes && !fecha.estaSeleccionado,
+            'text-inverse': fecha.estaSeleccionado,
+          }"
+        >
+          {{ fecha.label }}
+        </p>
+      </div>
+      <div style="width: 6px"></div>
+    </div>
+  </div>
+</div>

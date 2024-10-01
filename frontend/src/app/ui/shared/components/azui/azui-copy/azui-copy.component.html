@@ -1,0 +1,29 @@
+<span
+  azui-icons
+  [name]="estaCopiando ? 'check' : 'copiar'"
+  nz-tooltip
+  [nzTooltipTitle]="estaCopiando ? feedbackMessage : tooltipMessage"
+  style="cursor: pointer"
+  [ngStyle]="{ 'font-size': size, height: size }"
+  [ngClass]="{ 'text-success-hard': estaCopiando }"
+  [class]="color"
+  (click)="copiar()"
+  *ngIf="tipo === 'icono'"
+></span>
+
+<button
+  azui-button
+  tipo="outlined"
+  contenido="icono"
+  type="button"
+  nz-tooltip
+  [nzTooltipTitle]="estaCopiando ? feedbackMessage : tooltipMessage"
+  (click)="copiar()"
+  *ngIf="tipo === 'boton'"
+>
+  <span
+    azui-icons
+    [ngClass]="{ 'text-success-hard': estaCopiando }"
+    [name]="estaCopiando ? 'check' : 'copiar'"
+  ></span>
+</button>

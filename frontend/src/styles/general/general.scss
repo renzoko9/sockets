@@ -1,0 +1,141 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+:root {
+  --color-base: #{tColors.$color-base};
+  --color-subordinate: #{tColors.$color-subordinate};
+  --color-primary-1: #{tColors.$color-primary-1};
+  --color-primary-5: #{tColors.$color-primary-5};
+  --color-success: #{tColors.$color-success-hard};
+  --color-success-medium: #{tColors.$color-success-medium};
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  color: var(--color-base);
+}
+
+p {
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+small {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 38px;
+  line-height: 46px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 500;
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.no-border {
+  border: none;
+}
+
+.border-text-skeleton {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.divider {
+  margin: 0;
+  border-bottom: 1px solid #d2e6ee;
+}
+
+.divider-vertical {
+  margin: 0;
+  border-left: 1px solid #d2e6ee;
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#tag-entorno {
+  position: fixed;
+  padding: 8px 24px;
+  background-color: #0e7595;
+  width: 320px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2px;
+  transform: rotate(-45deg);
+  bottom: 68px;
+  right: -74px;
+  user-select: none;
+  color: white;
+  box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.25);
+}
+
+/*
+========= SCROLLBAR - INICIO ========
+*/
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #7ab5cc transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7ab5cc;
+  border: 2px solid transparent;
+  border-radius: 24px;
+  background-clip: content-box;
+}
+
+/*
+  ========= SCROLLBAR - FIN ========
+  */

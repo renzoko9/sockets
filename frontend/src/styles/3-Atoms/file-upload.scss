@@ -1,0 +1,29 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-file-upload > input[type='file'] {
+  display: none;
+}
+
+.az-file-upload > #dropzone {
+  position: relative;
+  border-radius: 8px;
+  border: 2px dashed tColors.$color-primary-2;
+}
+
+.az-file-upload > #dropzone > #drop-content {
+  position: absolute;
+  opacity: 0;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  pointer-events: none;
+}
+
+.az-file-upload > .az-drag-over > #drop-content {
+  opacity: 1 !important;
+}

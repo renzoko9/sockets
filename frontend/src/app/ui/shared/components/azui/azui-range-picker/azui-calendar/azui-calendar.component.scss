@@ -1,0 +1,14 @@
+.numero-container {
+  width: 24px;
+  border-radius: 4px;
+}
+
+.border-izquierda {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.border-derecha {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}

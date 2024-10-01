@@ -1,0 +1,15 @@
+<div
+  class="flex-column gap-8"
+  [ngStyle]="{
+    'max-height': maxHeight,
+    'overflow-y': maxHeight ? 'auto' : 'inherit'
+  }"
+>
+  <azui-tree-node
+    [nodo]="nodo"
+    [esRaiz]="true"
+    [nivel]="0"
+    [seleccionElemento]="seleccionarNodo"
+    *ngFor="let nodo of nodos"
+  ></azui-tree-node>
+</div>

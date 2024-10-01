@@ -1,0 +1,73 @@
+<div class="flex gap-8 items-center justify-space-between py-8">
+  <div class="flex items-center gap-24">
+    <div class="flex items-center gap-8">
+      <p class="text-subordinate">Mostrar</p>
+      <azui-select
+        [valorSeleccionado]="itemsPorPagina"
+        (valorSeleccionadoChange)="cambioTamanioPagina.emit($any($event))"
+        height="36px"
+      >
+        <azui-option
+          [id]="12"
+          label="12 {{ etiquetaSelect! }} por página"
+        ></azui-option>
+        <azui-option
+          [id]="24"
+          label="24 {{ etiquetaSelect! }} por página"
+        ></azui-option>
+        <azui-option
+          [id]="36"
+          label="36 {{ etiquetaSelect! }} por página"
+        ></azui-option>
+        <azui-option
+          [id]="48"
+          label="48 {{ etiquetaSelect! }} por página"
+        ></azui-option>
+      </azui-select>
+    </div>
+    <p class="text-subordinate">
+      {{ iInicio }}-{{ iFin }} de {{ total }} {{ modulo }}
+    </p>
+  </div>
+  <div class="flex items-center" style="gap: 4px">
+    <!-- FLECHA IZQUIERDA -->
+    <button
+      type="button"
+      class="az-paginacion-item"
+      (click)="avanzarPagina(-1)"
+    >
+      <span
+        azui-icons
+        name="izquierda"
+        style="font-size: 14px; height: 14px"
+      ></span>
+    </button>
+
+    <div class="flex items-center" style="gap: 4px">
+      <button
+        type="button"
+        [ngClass]="{
+        'az-paginacion-item': seleccionable.valor !== pagina || !seleccionable.esNumero,
+        'az-paginacion-item-selected': seleccionable.esNumero && seleccionable.valor === pagina,
+        }"
+        (click)="gestionarSeleccionable(seleccionable)"
+        *ngFor="let seleccionable of seleccionables"
+      >
+        {{ seleccionable.esNumero ? seleccionable.valor : '...' }}
+      </button>
+    </div>
+
+    <!-- FLECHA DERECHA -->
+    <button
+      type="button"
+      class="az-paginacion-item"
+      (click)="avanzarPagina(+1)"
+    >
+      <span
+        azui-icons
+        name="derecha"
+        style="font-size: 14px; height: 14px"
+      ></span>
+    </button>
+  </div>
+</div>

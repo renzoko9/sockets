@@ -1,0 +1,12 @@
+<div
+  class="flex items-center gap-40 py-8 px-24 background-secondary-first-soft"
+  style="height: 38px"
+>
+  <p
+    class="text-primary-5"
+    [ngStyle]="columna.style"
+    *ngFor="let columna of columnas"
+  >
+    {{ columna.nombre }}
+  </p>
+</div>

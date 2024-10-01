@@ -1,0 +1,56 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  [nzClosable]="false"
+  [nzCentered]="true"
+  [nzStyle]="{
+    width: '100%',
+    'padding-left': '24px',
+    'padding-right': '24px',
+    'max-width': maxWidth,
+    'max-height': maxHeight,
+    height: 'calc(100% - 48px)',
+    display: 'inline-flex',
+    'flex-direction': 'column',
+    'justify-content': 'center'
+  }"
+  [nzAutofocus]="null"
+>
+  <!-- TITULO -->
+  <ng-container *nzModalTitle>
+    <div class="flex-column gap-8">
+      <h5>
+        Confirmar
+        {{ titulo }}
+      </h5>
+      <p class="text-subordinate">
+        ¿Estás de acuerdo con la información ingresada para la
+        {{ subtitulo }}?
+      </p>
+    </div>
+  </ng-container>
+
+  <!-- CONTENIDO -->
+  <ng-container *nzModalContent>
+    <ng-content></ng-content>
+  </ng-container>
+
+  <!-- FOOTER -->
+  <ng-container *nzModalFooter>
+    <div class="flex items-center justify-end gap-8">
+      <button
+        type="button"
+        azui-button
+        tipo="outlined"
+        (click)="submit.emit(false)"
+      >
+        No,
+        {{ etiquetaCancelar }}
+      </button>
+      <button type="button" azui-button (click)="submit.emit(true)">
+        Sí,
+        {{ etiquetaAceptar }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>

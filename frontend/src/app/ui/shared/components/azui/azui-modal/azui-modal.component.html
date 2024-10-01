@@ -1,0 +1,47 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  [nzClosable]="false"
+  [nzCentered]="estaCentrado"
+  [nzStyle]="{
+    width,
+    'max-width':maxWidth,
+    'padding-bottom': '40px',
+    top: '40px',
+  }"
+  [nzAutofocus]="null"
+>
+  <!-- TITULO -->
+  <ng-container *nzModalTitle>
+    <div class="flex-column gap-8">
+      <h5>{{ titulo }}</h5>
+      <p class="text-subordinate" *ngIf="descripcion">{{ descripcion }}</p>
+    </div>
+  </ng-container>
+
+  <ng-container *nzModalContent>
+    <ng-content></ng-content>
+  </ng-container>
+
+  <ng-container *nzModalFooter>
+    <div class="flex items-center justify-end gap-8">
+      <button
+        type="button"
+        azui-button
+        tipo="outlined"
+        (click)="submit.emit(false)"
+        *ngIf="etiquetaCancelar"
+      >
+        {{ etiquetaCancelar }}
+      </button>
+      <button
+        type="button"
+        azui-button
+        (click)="submit.emit(true)"
+        *ngIf="etiquetaAceptar"
+      >
+        {{ etiquetaAceptar }}
+      </button>
+    </div>
+  </ng-container>
+</nz-modal>

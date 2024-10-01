@@ -1,0 +1,10 @@
+<div
+  class="flex items-center py-8 px-16"
+  (click)="seleccionar()"
+  [ngClass]="{
+    'az-select-option': !estaSeleccionado,
+    'az-select-option-selected': estaSeleccionado
+  }"
+>
+  <p>{{ label }}</p>
+</div>

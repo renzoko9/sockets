@@ -1,0 +1,115 @@
+<div
+  class="flex-column"
+  [ngStyle]="{
+    width,
+}"
+>
+  <!-- INPUTS -->
+  <div class="flex gap-16 items-center">
+    <!-- FECHA IZQUIERDA -->
+    <azui-input-group
+      [prefixRef]="preffix"
+      label="Desde"
+      class="expanded"
+      (click)="seMuestraElCalendario = true"
+      [isDisabled]="isDisabled"
+      style="cursor: pointer"
+    >
+      <input
+        type="text"
+        [value]="fechaIzquierda | date : 'dd MMM yyyy' | uppercase"
+        azui-input
+        readonly
+      />
+    </azui-input-group>
+    <p>—</p>
+    <!-- FECHA DERECHA -->
+    <azui-input-group
+      [prefixRef]="preffix"
+      label="Hasta"
+      class="expanded"
+      (click)="seMuestraElCalendario = true"
+      style="cursor: pointer"
+      [isDisabled]="isDisabled"
+    >
+      <input
+        type="text"
+        azui-input
+        [value]="fechaDerecha | date : 'dd MMM yyyy' | uppercase"
+        readonly
+      />
+    </azui-input-group>
+  </div>
+
+  <nz-collapse nzGhost>
+    <nz-collapse-panel
+      [ngClass]="{
+        'filtros-cerrado': !seMuestraElCalendario,
+        'filtros-abierto': seMuestraElCalendario
+      }"
+      [nzHeader]="undefined"
+      [(nzActive)]="seMuestraElCalendario"
+      [nzShowArrow]="false"
+    >
+      <div class="flex gap-40">
+        <!-- CALENDARIO IZQUIERDO -->
+        <div class="flex-column gap-8 expanded">
+          <!-- FLECHA Y FECHA -->
+
+          <div class="flex gap-8 items-center">
+            <span
+              azui-icons
+              name="izquierda"
+              class="text-primary-5"
+              style="font-size: 14px; height: 1em"
+            ></span>
+            <div class="flex expanded gap-8 justify-center">
+              <button azui-button tipo="link">
+                {{ calendarioIzquierda | date : 'MMMM' | titlecase }}
+              </button>
+              <button azui-button tipo="link">
+                {{ calendarioIzquierda | date : 'yyyy' }}
+              </button>
+            </div>
+          </div>
+          <azui-divider></azui-divider>
+
+          <azui-calendar
+            [fechaBase]="calendarioIzquierda"
+            (fechaChange)="setFechaIzquierda($event)"
+          ></azui-calendar>
+        </div>
+        <!-- CALENDARIO DERECHO -->
+        <div class="flex-column gap-8 expanded">
+          <!-- FLECHA Y FECHA -->
+          <div class="flex gap-8 items-center">
+            <div class="flex expanded gap-8 justify-center">
+              <button azui-button tipo="link">
+                {{ calendarioDerecha | date : 'MMMM' | titlecase }}
+              </button>
+              <button azui-button tipo="link">
+                {{ calendarioDerecha | date : 'yyyy' }}
+              </button>
+            </div>
+            <span
+              azui-icons
+              name="derecha"
+              class="text-primary-5"
+              style="font-size: 14px; height: 1em"
+            ></span>
+          </div>
+          <azui-divider></azui-divider>
+          <azui-calendar
+            [fechaBase]="calendarioDerecha"
+            [esDerecho]="true"
+            (fechaChange)="setFechaDerecha($event)"
+          ></azui-calendar>
+        </div>
+      </div>
+    </nz-collapse-panel>
+  </nz-collapse>
+</div>
+
+<ng-template #preffix>
+  <span azui-icons name="calendario"></span>
+</ng-template>

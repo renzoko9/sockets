@@ -1,0 +1,25 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-radio-button-item {
+  cursor: pointer;
+  transition: all 0.3s;
+  color: tColors.$color-subordinate;
+}
+
+.az-radio-button-item:hover {
+  color: tColors.$color-primary-5;
+}
+
+.az-radio-button-item > span,
+.az-radio-button-item-selected > span {
+  font-size: 12px;
+  height: 12px;
+}
+
+.az-radio-button-item-selected {
+  cursor: pointer;
+  transition: all 0.3s;
+  background-color: tColors.$color-primary-2;
+  color: tColors.$color-primary-5;
+  border-radius: 40px;
+}

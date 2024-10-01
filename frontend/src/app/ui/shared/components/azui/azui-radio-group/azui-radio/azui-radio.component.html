@@ -1,0 +1,34 @@
+<div
+  class="az-radio"
+  (click)="cambiarEstaSeleccionado()"
+  [ngClass]="{
+    'az-radio__disabled': isDisabled
+  }"
+>
+  <input
+    #radioRef
+    type="radio"
+    [disabled]="isDisabled"
+    [checked]="estaSeleccionado"
+    [value]="value"
+  />
+  <div class="label-container">
+    <span
+      class="text"
+      [ngClass]="{
+        'text-primary-5': estaSeleccionado && !isDisabled,
+        'text-base': !estaSeleccionado && !isDisabled,
+        'text-disabled': isDisabled
+      }"
+      >{{ label }}</span
+    >
+    <span
+      class="description"
+      [ngClass]="{
+        'text-disabled': isDisabled,
+        'text-subordinate': !isDisabled
+      }"
+      >{{ descripcion }}</span
+    >
+  </div>
+</div>

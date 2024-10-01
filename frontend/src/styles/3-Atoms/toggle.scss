@@ -1,0 +1,55 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-toggle {
+  cursor: pointer;
+  position: relative;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  transition: all 0.4s ease;
+}
+
+.az-toggle--disabled {
+  cursor: not-allowed;
+}
+
+.az-toggle--circular {
+  border-radius: 40px;
+}
+
+.az-toggle--rectangular {
+  border-radius: 8px;
+}
+
+.az-toggle--active {
+  padding-left: 12px;
+  padding-right: 4px;
+}
+
+.az-toggle--inactive {
+  padding-left: 4px;
+  padding-right: 12px;
+}
+
+.az-toggle__icon {
+  position: absolute;
+  transition: all 0.4s ease;
+  width: 30px;
+  height: 30px;
+}
+
+.az-toggle__icon--inactive {
+  left: 4px;
+}
+
+.az-toggle__icon--active {
+  left: calc(100% - 34px);
+}
+
+.az-toggle__space {
+  height: 30px;
+}
+
+.az-toggle__space--left,
+.az-toggle__space--right {
+  width: 38px;
+}

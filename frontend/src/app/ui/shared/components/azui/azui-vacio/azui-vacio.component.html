@@ -1,0 +1,60 @@
+<article
+  class="flex-column br-8 p-24 gap-24 background-inverse shadow-primary items-center"
+  *ngIf="tipo === 'no-resultados'"
+>
+  <!-- IMAGEN -->
+  <img
+    src="assets/azui-png/azui-vacio/sin-resultados.svg"
+    alt="No hay resultados"
+    height="200"
+  />
+
+  <!-- TITULO -->
+  <div class="flex-column items-center gap-16">
+    <p>No hay resultados</p>
+    <p class="text-description text-subordinate">
+      No encontramos {{ nombreModulo }} que coincidan con tu búsqueda
+    </p>
+  </div>
+
+  <a azui-button tipo="outlined">
+    <span azui-icons name="borrador"></span>
+    Limpiar búsqueda
+  </a>
+</article>
+
+<article
+  class="flex-column br-8 px-24 py-40 gap-24 background-inverse shadow-primary items-center"
+  *ngIf="tipo === 'no-data'"
+>
+  <!-- IMAGEN -->
+  <img
+    src="assets/azui-png/azui-vacio/sin-data.svg"
+    alt="No hay {{ nombreModulo }} disponibles"
+    height="100"
+  />
+
+  <!-- TITULO -->
+  <div class="flex-column items-center gap-8">
+    <p>No hay {{ nombreModulo }} disponibles</p>
+    <p class="text-description text-subordinate">
+      Aún no se han agregado {{ nombreModulo }} que podemos mostrarte
+    </p>
+  </div>
+
+  <a [routerLink]="routerLink" azui-button *ngIf="routerLink" tipo="outlined">
+    <span azui-icons name="mas"></span>
+    {{ etiquetaBoton }}
+  </a>
+
+  <button
+    (click)="noDataAction.emit()"
+    azui-button
+    *ngIf="!routerLink"
+    type="button"
+    tipo="outlined"
+  >
+    <span azui-icons name="mas"></span>
+    {{ etiquetaBoton }}
+  </button>
+</article>

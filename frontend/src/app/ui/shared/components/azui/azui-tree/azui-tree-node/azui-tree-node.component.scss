@@ -1,0 +1,63 @@
+.nodo-seleccionado {
+  border: none;
+  outline: none;
+  color: var(--color-primary-6);
+  background-color: var(--color-secondary-first-soft);
+}
+
+.nodo-sin-seleccion {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.nodo-sin-seleccion:hover {
+  color: var(--color-primary-5);
+  background-color: var(--color-primary-1);
+}
+
+.circle-radio {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s;
+}
+
+.circle-radio-selected {
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-primary-5);
+}
+
+.nodo-sin-seleccion:hover > .circle-radio {
+  border-color: var(--color-primary-5);
+}
+
+:host
+  ::ng-deep
+  .ant-collapse-ghost
+  > .ant-collapse-item
+  > .ant-collapse-content {
+  border-top: none;
+  margin-top: 0;
+}
+
+:host
+  ::ng-deep
+  .ant-collapse
+  > .ant-collapse-item.ant-collapse-no-arrow
+  > .ant-collapse-header {
+  padding: 0;
+  border-bottom: 0;
+}
+
+:host ::ng-deep .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 0;
+}
+
+:host ::ng-deep .ant-collapse-content > .ant-collapse-content-box {
+  padding-top: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0 !important;
+}

@@ -1,0 +1,198 @@
+<!-- SIN ARCHIVOS -->
+
+<div
+  class="animate__animated animate__fadeIn flex-column gap-24 background-inverse br-8 py-16 px-24 az-file-upload"
+  *ngIf="sustentos.length === 0"
+>
+  <input
+    type="file"
+    [accept]="accept"
+    #inputFile
+    (change)="handleFiles($any($event.target).files)"
+  />
+
+  <h5>{{ titulo }}</h5>
+
+  <div
+    id="dropzone"
+    azuiFileUploadAnimation
+    (fileDropped)="handleFiles($event)"
+  >
+    <div
+      id="upload-content"
+      class="flex flex-wrap justify-center items-center gap-40 p-40"
+    >
+      <img src="assets/pngs/upload.png" alt="Sube tu archivo" height="48" />
+      <div class="flex-column">
+        <p>
+          Arrastra y suelta tu
+          <span class="text-medium">archivo {{ accept }}</span> en esta área
+        </p>
+        <div class="flex gap-8 items-center">
+          <p class="text-description">o</p>
+          <button
+            azui-button
+            tipo="link"
+            class="text-description"
+            (click)="inputFile.click()"
+          >
+            busca archivos
+          </button>
+          <p class="text-description">en tu computadora</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="drop-content"
+      class="background-primary-1 flex flex-wrap justify-center items-center gap-40 p-40"
+    >
+      <img src="assets/pngs/drop.png" alt="Sube tu archivo" height="48" />
+      <h5>¡Suéltalo aquí!</h5>
+    </div>
+  </div>
+
+  <button azui-button class="item-self-center" (click)="inputFile.click()">
+    Subir archivo
+  </button>
+</div>
+
+<div
+  class="animate__animated animate__fadeIn flex-column gap-24 background-inverse br-8 py-16 px-24"
+  *ngIf="sustentos.length !== 0"
+>
+  <h5>{{ titulo }}</h5>
+
+  <div
+    class="animate__animated animate__fadeIn flex items-center justify-center gap-16 p-40 border-success-soft br-8"
+    style="border-width: 2px"
+    *ngIf="animacionArchivoSubido"
+  >
+    <div
+      class="flex br-50 background-success-soft"
+      style="width: 48px; height: 48px"
+    >
+      <span
+        azui-icons
+        name="check"
+        class="text-success-hard m-auto"
+        style="font-size: 24px"
+      ></span>
+    </div>
+
+    <p class="text-success-hard">
+      Realizaste la carga del archivo correctamente
+    </p>
+  </div>
+
+  <div
+    class="animate__animated animate__fadeIn flex gap-24 p-40 border-primary-2 br-8"
+    *ngIf="!animacionArchivoSubido"
+  >
+    <div class="flex gap-24 expanded items-center">
+      <img src="assets/pngs/excel.png" alt="Excel" height="48" />
+      <p class="expanded" *ngIf="!esNombreEditable">
+        {{ filename }}
+      </p>
+      <div class="expanded" *ngIf="esNombreEditable">
+        <ng-content></ng-content>
+      </div>
+    </div>
+    <div class="flex gap-8" *ngIf="!esModoLectura">
+      <button
+        azui-button
+        tipo="outlined"
+        contenido="icono"
+        nz-tooltip
+        nzTooltipTitle="Descargar"
+        (click)="descargarSustento()"
+      >
+        <span azui-icons name="descarga"></span>
+      </button>
+      <button
+        azui-button
+        tipo="outlined"
+        contenido="icono"
+        nz-tooltip
+        nzTooltipTitle="Descartar"
+        (click)="eliminarSustento()"
+      >
+        <span azui-icons name="basura" class="text-danger-hard"></span>
+      </button>
+    </div>
+    <a
+      azui-button
+      tipo="outlined"
+      contenido="icono"
+      nz-tooltip
+      nzTooltipTitle="Ver archivo"
+      target="_blank"
+      [routerLink]="[RUTAS.visualizarDocumento.base, sustentos[0].uid]"
+      *ngIf="esModoLectura"
+    >
+      <span azui-icons name="ojo"></span>
+    </a>
+  </div>
+</div>
+
+<!-- <div
+  class="animate__animated animate__fadeIn flex-column"
+  style="gap: 4px"
+  *ngIf="sustentos.length === 0"
+>
+  <div azuiFileUploadAnimation>
+    <nz-upload
+      [nzAccept]="accept"
+      nzType="drag"
+      [(nzFileList)]="sustentos"
+      [nzBeforeUpload]="beforeUploadSustento"
+      [nzShowButton]="false"
+      [nzShowUploadList]="false"
+      [ngClass]="{ 'upload-error': mostrarError }"
+    >
+      <div class="flex-column gap-8 background-inverse p-16 br-8">
+        <div class="background-primary-1 py-8 px-16 br-8">
+          <p class="text-description text-left">{{ titulo }}</p>
+        </div>
+        <button azui-button type="button" tipo="text" class="item-self-center">
+          Seleccionar archivo
+        </button>
+      </div>
+    </nz-upload>
+  </div>
+  <p class="text-danger-hard" *ngIf="mostrarError">Selecciona un archivo</p>
+</div>
+
+<div
+  class="animate__animated animate__fadeIn flex items-center gap-16 background-inverse br-8 p-16"
+  *ngIf="sustentos.length > 0"
+>
+  <div class="flex-column expanded gap-8">
+    <div class="background-primary-1 py-8 px-16 br-8">
+      <p class="text-description text-left">{{ titulo }}</p>
+    </div>
+    <p class="text-left">{{ filename }}</p>
+  </div>
+  <div class="flex items-center gap-8">
+    <button
+      azui-button
+      tipo="outlined"
+      contenido="icono"
+      nz-tooltip
+      nzTooltipTitle="Descargar"
+      (click)="descargarSustento()"
+    >
+      <span azui-icons name="check"></span>
+    </button>
+    <button
+      azui-button
+      tipo="outlined"
+      contenido="icono"
+      nz-tooltip
+      nzTooltipTitle="Descartar"
+      (click)="eliminarSustento()"
+    >
+      <span azui-icons name="basura"></span>
+    </button>
+  </div>
+</div> -->

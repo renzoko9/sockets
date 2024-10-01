@@ -1,0 +1,64 @@
+<div
+  class="flex-column gap-8"
+  [ngStyle]="{ 'padding-left': nivel * paddingLeft + 'px' }"
+>
+  <button
+    type="button"
+    class="az-button az-button-normal"
+    [ngClass]="{
+      'nodo-seleccionado': nodo.estaSeleccionado,
+      'nodo-sin-seleccion text-subordinate': !nodo.estaSeleccionado
+    }"
+    (click)="handleClicElement()"
+    (dblclick)="handleDoubleClicElement()"
+  >
+    <span
+      azui-icons
+      [name]="nodo.estaExpandido ? 'carpeta-abierta' : 'carpeta-cerrada'"
+      (click)="expandirNodo($event)"
+      *ngIf="nodo.hijos"
+    ></span>
+    <span
+      azui-icons
+      [name]="nodo.iconoHoja"
+      *ngIf="!nodo.hijos && nodo.iconoHoja"
+    ></span>
+    <p class="expanded text-left">
+      {{ nodo.label }}
+    </p>
+    <div
+      class="circle-radio flex items-center justify-center br-50"
+      [ngClass]="{
+        'border-disabled': !nodo.estaSeleccionado,
+        'border-primary-5': nodo.estaSeleccionado
+      }"
+    >
+      <div
+        class="br-50"
+        [ngClass]="{
+        'circle-radio-selected': nodo.estaSeleccionado,
+      }"
+      ></div>
+    </div>
+  </button>
+
+  <ng-container *ngIf="nodo.hijos">
+    <nz-collapse nzGhost>
+      <nz-collapse-panel
+        [(nzActive)]="nodo.estaExpandido"
+        [nzHeader]="headerFiltros"
+        [nzShowArrow]="false"
+      >
+        <div class="flex-column gap-8">
+          <azui-tree-node
+            [nodo]="nodo"
+            [nivel]="nivel + 1"
+            [seleccionElemento]="seleccionElemento"
+            *ngFor="let nodo of nodo.hijos"
+          ></azui-tree-node>
+        </div>
+      </nz-collapse-panel>
+    </nz-collapse>
+    <ng-template #headerFiltros></ng-template>
+  </ng-container>
+</div>

@@ -1,0 +1,9 @@
+<div
+  class="flex items-center gap-40 p-24"
+  [ngClass]="{
+    'background-inverse': !estaSeleccionado,
+    'background-primary-1 border-primary-5 row-selected': estaSeleccionado
+  }"
+>
+  <ng-content></ng-content>
+</div>

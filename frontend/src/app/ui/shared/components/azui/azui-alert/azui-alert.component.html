@@ -1,0 +1,62 @@
+<section class="flex animate__animated animate__fadeInDown br-8 o-hidden">
+  <!-- ICONO -->
+  <div
+    class="flex-column px-16"
+    [ngClass]="{
+      'background-success-hard': tipoAlerta === TipoRepuestaType.Success,
+      'background-warning-hard': tipoAlerta === TipoRepuestaType.Warning,
+      'background-danger-hard': tipoAlerta === TipoRepuestaType.Error,
+      'background-subordinate': tipoAlerta === TipoRepuestaType.Neutral,
+      'background-primary-5': tipoAlerta === TipoRepuestaType.Primary,
+    }"
+  >
+    <span
+      azui-icons
+      [name]="tipoAlerta! | tipoIconoAlerta"
+      class="m-auto text-inverse"
+      style="font-size: 18px; height: 18px"
+    ></span>
+  </div>
+  <!-- TITULO Y DESCRIPCION -->
+  <div
+    class="flex-column gap-8 p-16 expanded"
+    [ngClass]="{ 
+      'background-success-soft': tipoAlerta === TipoRepuestaType.Success,
+      'background-warning-soft': tipoAlerta === TipoRepuestaType.Warning,
+      'background-danger-soft': tipoAlerta === TipoRepuestaType.Error,
+      'background-disabled': tipoAlerta === TipoRepuestaType.Neutral,
+      'background-primary-2': tipoAlerta === TipoRepuestaType.Primary,
+       }"
+    *ngIf="titulo || descripcion"
+  >
+    <ng-container *ngIf="titulo">
+      <h5
+        [ngClass]="{ 
+             'text-success-hard': tipoAlerta === TipoRepuestaType.Success,
+             'text-warning-hard': tipoAlerta === TipoRepuestaType.Warning,
+             'text-danger-hard': tipoAlerta === TipoRepuestaType.Error,
+             'text-primary-5': tipoAlerta === TipoRepuestaType.Primary,
+         }"
+        *ngIf="size === 'normal'"
+      >
+        {{ titulo }}
+      </h5>
+      <p
+        class="text-medium"
+        [ngClass]="{ 
+             'text-success-hard': tipoAlerta === TipoRepuestaType.Success,
+             'text-warning-hard': tipoAlerta === TipoRepuestaType.Warning,
+             'text-danger-hard': tipoAlerta === TipoRepuestaType.Error,
+             'text-primary-5': tipoAlerta === TipoRepuestaType.Primary,
+         }"
+        *ngIf="size === 'small'"
+      >
+        {{ titulo }}
+      </p>
+    </ng-container>
+
+    <p [ngClass]="{ 'text-description': size === 'small' }" *ngIf="descripcion">
+      {{ descripcion }}
+    </p>
+  </div>
+</section>

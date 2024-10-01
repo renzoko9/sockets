@@ -1,0 +1,94 @@
+@use '../../1-Tokens/tokens-colors.scss' as tColors;
+
+@mixin color-classes($name, $color) {
+  .background-#{$name} {
+    background: $color;
+  }
+
+  .text-#{$name} {
+    color: $color;
+  }
+
+  .border-#{$name} {
+    border: 1px solid $color;
+  }
+}
+
+// PRIMARIES
+@include color-classes('primary-1', tColors.$color-primary-1);
+@include color-classes('primary-2', tColors.$color-primary-2);
+@include color-classes('primary-3', tColors.$color-primary-3);
+@include color-classes('primary-4', tColors.$color-primary-4);
+@include color-classes('primary-5', tColors.$color-primary-5);
+@include color-classes('primary-6', tColors.$color-primary-6);
+@include color-classes('primary-7', tColors.$color-primary-7);
+@include color-classes('primary-8', tColors.$color-primary-8);
+@include color-classes('primary-9', tColors.$color-primary-9);
+
+// SEMANTICS
+@include color-classes('success-soft', tColors.$color-success-soft);
+@include color-classes('success-medium', tColors.$color-success-medium);
+@include color-classes('success-hard', tColors.$color-success-hard);
+@include color-classes('warning-soft', tColors.$color-warning-soft);
+@include color-classes('warning-medium', tColors.$color-warning-medium);
+@include color-classes('warning-hard', tColors.$color-warning-hard);
+@include color-classes('error-soft', tColors.$color-danger-soft);
+@include color-classes('error-medium', tColors.$color-danger-medium);
+@include color-classes('error-hard', tColors.$color-danger-hard);
+
+// SECONDARIES
+@include color-classes(
+  'secondary-first-soft',
+  tColors.$color-secondary-first-soft
+);
+@include color-classes(
+  'secondary-first-medium',
+  tColors.$color-secondary-first-medium
+);
+@include color-classes(
+  'secondary-first-hard',
+  tColors.$color-secondary-first-hard
+);
+
+@include color-classes(
+  'secondary-second-soft',
+  tColors.$color-secondary-second-soft
+);
+@include color-classes(
+  'secondary-second-medium',
+  tColors.$color-secondary-second-medium
+);
+@include color-classes(
+  'secondary-second-hard',
+  tColors.$color-secondary-second-hard
+);
+
+@include color-classes(
+  'secondary-third-soft',
+  tColors.$color-secondary-third-soft
+);
+@include color-classes(
+  'secondary-third-medium',
+  tColors.$color-secondary-third-medium
+);
+@include color-classes(
+  'secondary-third-hard',
+  tColors.$color-secondary-third-hard
+);
+
+// NEUTRALS
+@include color-classes('base', tColors.$color-base);
+@include color-classes('disabled', tColors.$color-disabled);
+@include color-classes('subordinate', tColors.$color-subordinate);
+@include color-classes('inverse', tColors.$color-inverse);
+
+// SYSTEM COLORS
+@include color-classes('light', tColors.$color-light);
+@include color-classes('dark', tColors.$color-dark);
+
+// GRADIENT
+@include color-classes('gradiente', tColors.$gradiente);
+
+// WHITE TRANSPARENCY
+@include color-classes('white-transparency', tColors.$white-transparency);
+

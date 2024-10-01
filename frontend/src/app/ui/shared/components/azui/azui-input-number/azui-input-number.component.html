@@ -1,0 +1,22 @@
+<div
+  class="az-input-number"
+  [ngClass]="{
+    'az-input-number-layout__horizontal': layout === 'horizontal',
+    'az-input-number-layout__vertical': layout === 'vertical',
+    'az-input-number__disabled': isDisabled,
+    'background-primary-1': background,
+  }"
+>
+  <button (click)="restar()" type="button">
+    <span azui-icons name="menos"></span>
+  </button>
+  <input
+    type="number"
+    [value]="value?.toString()?.padStart(2, '0')"
+    [disabled]="isDisabled"
+    (input)="handleInput($event)"
+  />
+  <button (click)="sumar()" type="button">
+    <span azui-icons name="mas"></span>
+  </button>
+</div>

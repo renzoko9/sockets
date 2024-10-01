@@ -1,0 +1,26 @@
+<div
+  class="flex-column"
+  [ngClass]="{
+    'br-8 border-danger-hard o-hidden':
+      !isDisabled &&
+      errorMessage !== undefined &&
+      errorMessage !== null &&
+      errorMessage !== ''
+  }"
+>
+  <ng-content></ng-content>
+  <div
+    class="azui-error-message background-danger-hard text-inverse px-8"
+    style="padding-top: 2px; padding-right: 2px"
+    *ngIf="
+      !isDisabled &&
+      errorMessage !== undefined &&
+      errorMessage !== null &&
+      errorMessage !== ''
+    "
+  >
+    <p>
+      {{ errorMessage }}
+    </p>
+  </div>
+</div>

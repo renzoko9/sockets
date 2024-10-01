@@ -1,0 +1,47 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-textarea {
+  position: relative;
+  min-height: 42px;
+}
+
+.az-textarea > textarea {
+  padding-top: 8px;
+  padding-bottom: 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  min-height: 34px;
+  max-height: 150px;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: tColors.$color-inverse;
+}
+
+.az-textarea > label {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  pointer-events: none;
+  transition: 0.3s ease;
+  color: tColors.$color-subordinate;
+}
+
+.az-textarea > textarea:focus,
+.az-textarea > textarea:not(:placeholder-shown) {
+  padding-top: 22px;
+}
+
+.az-textarea > textarea:focus + label,
+.az-textarea > textarea:not(:placeholder-shown) + label {
+  font-size: 10px;
+  line-height: 140%;
+}
+
+.az-textarea__disabled {
+  color: tColors.$color-primary-3;
+}
+
+.az-textarea__error {
+  color: tColors.$color-danger-medium;
+}

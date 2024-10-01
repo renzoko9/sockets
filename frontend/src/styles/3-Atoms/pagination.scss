@@ -1,0 +1,43 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-paginacion-item {
+  min-width: 36px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: tColors.$color-primary-6;
+  height: 24px;
+}
+
+.az-paginacion-item > span[azui-icons],
+.az-paginacion-item-selected > span[azui-icons]{
+  height: 16px;
+  color: inherit;
+}
+
+.az-paginacion-item:hover {
+  background-color: tColors.$color-inverse;
+}
+
+.az-paginacion-item-selected {
+  min-width: 36px;
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: tColors.$color-primary-5;
+  color: tColors.$color-inverse;
+  height: 24px;
+}

@@ -1,0 +1,11 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-table > azui-table-body > azui-table-row > .flex,
+.az-table > azui-table-skeleton > .flex {
+  border-top: 1px solid tColors.$color-primary-1;
+}
+
+.az-table > azui-table-body > azui-table-row > .flex:last-child,
+.az-table > azui-table-skeleton > .flex:last-child {
+  border-bottom: 1px solid tColors.$color-primary-1;
+}

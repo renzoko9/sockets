@@ -1,0 +1,24 @@
+<section class="az-table flex-column br-8 background-inverse w100 o-hidden">
+  <ng-content select="azui-table-head"></ng-content>
+
+  <ng-container *ngIf="totalData === undefined || totalData === null">
+    <ng-content select="azui-table-skeleton"></ng-content>
+  </ng-container>
+
+  <ng-container
+    *ngIf="totalData !== undefined && totalData !== null && totalData === 0"
+  >
+    <azui-vacio
+      [nombreModulo]="nombreModulo!"
+      [etiquetaBoton]="etiquetaBoton!"
+      [routerLink]="routerLink"
+      (noDataAction)="noDataAction.emit()"
+    ></azui-vacio>
+  </ng-container>
+
+  <ng-container
+    *ngIf="totalData !== undefined && totalData !== null && totalData > 0"
+  >
+    <ng-content select="azui-table-body"></ng-content>
+  </ng-container>
+</section>

@@ -1,0 +1,37 @@
+<div
+  class="flex gap-8 py-4 px-8 background-inverse border-disabled br-8 items-center justify-center"
+  [ngClass]="{
+    'text-secondary-first-hard background-secondary-first-soft border-secondary-first-medium':
+      tipo === 'secondary-first',
+    'text-secondary-second-hard background-secondary-second-soft border-secondary-second-medium':
+      tipo === 'secondary-second',
+    'text-secondary-third-hard background-secondary-third-soft border-secondary-third-medium':
+      tipo === 'secondary-third',
+    'text-success-hard background-success-soft border-success-medium':
+      tipo === 'success',
+    'text-warning-hard background-warning-soft border-warning-medium':
+      tipo === 'warning',
+    'text-danger-hard background-danger-soft border-danger-medium':
+      tipo === 'danger',
+    'text-primary-5 background-primary-1 border-primary-3': tipo === 'primary'
+  }"
+>
+  <span
+    azui-icons
+    [name]="icono"
+    class="text-description"
+    [ngStyle]="{
+      'font-size': size === 'big' ? '14px' : '',
+      'height': size === 'big' ? '14px' : '12px'
+    }"
+    *ngIf="icono"
+  ></span>
+  <p
+    [ngStyle]="{
+      'font-size': size === 'big' ? '16px' : ''
+    }"
+    class="text-description"
+  >
+    {{ nombre | uppercase }}
+  </p>
+</div>

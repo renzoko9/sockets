@@ -1,0 +1,34 @@
+@use '../../1-Tokens/tokens-spacing.scss' as tSpacings;
+
+@mixin padding-classes($name, $paddingSize) {
+  .p-#{$name} {
+    padding: $paddingSize !important;
+  }
+  .px-#{$name} {
+    padding-left: $paddingSize !important;
+    padding-right: $paddingSize !important;
+  }
+  .py-#{$name} {
+    padding-top: $paddingSize !important;
+    padding-bottom: $paddingSize !important;
+  }
+  .pl-#{$name} {
+    padding-left: $paddingSize !important;
+  }
+  .pr-#{$name} {
+    padding-right: $paddingSize !important;
+  }
+  .pt-#{$name} {
+    padding-top: $paddingSize !important;
+  }
+  .pb-#{$name} {
+    padding-bottom: $paddingSize !important;
+  }
+}
+
+@include padding-classes('4', tSpacings.$spacing4);
+@include padding-classes('8', tSpacings.$spacing8);
+@include padding-classes('12', tSpacings.$spacing12);
+@include padding-classes('16', tSpacings.$spacing16);
+@include padding-classes('24', tSpacings.$spacing24);
+@include padding-classes('40', tSpacings.$spacing40);

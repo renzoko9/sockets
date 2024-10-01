@@ -1,0 +1,33 @@
+<div
+  class="flex items-center background-inverse br-8 az-input-group p-8"
+  [ngStyle]="azStyle"
+  [ngClass]="{
+    'border-primary-2': !estaEnFiltros,
+    'border-primary-4': hasFocus,
+    'az-input-group__disabled': isDisabled,
+    'az-input-group__value--disabled': isDisabled && !label,
+    'az-input-group__label--disabled': isDisabled && label,
+    'az-input-group__error': !isDisabled && hasError,
+  }"
+>
+  <ng-container *ngIf="prefixRef">
+    <ng-container *ngTemplateOutlet="prefixRef"></ng-container>
+  </ng-container>
+
+  <ng-content></ng-content>
+
+  <label
+    class="az-input-label"
+    [ngStyle]="{left}"
+    [ngClass]="{ 
+      'az-input-label__disabled': isDisabled,
+      'az-input-label__error': !isDisabled && hasError,
+       }"
+    *ngIf="label"
+    >{{ label }}</label
+  >
+
+  <ng-container *ngIf="suffixRef">
+    <ng-container *ngTemplateOutlet="suffixRef"></ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,42 @@
+<div
+  class="flex items-center py-8 px-24 br-8"
+  style="border-left-width: 4px"
+  [ngClass]="{
+    'border-success-medium': tipoRespuesta === TipoRespuestaType.Success,
+    'border-warning-medium': tipoRespuesta === TipoRespuestaType.Warning,
+    'border-error-medium': tipoRespuesta === TipoRespuestaType.Error,
+    'border-subordinate': tipoRespuesta === TipoRespuestaType.Neutral,
+    'border-primary-3': tipoRespuesta === TipoRespuestaType.Primary,
+  }"
+>
+  <div class="flex items-center gap-16 expanded">
+    <div
+      class="p-8 flex"
+      style="border-radius: 50%; width: 34px; height: 34px"
+      [ngClass]="{
+        'background-success-soft': tipoRespuesta === TipoRespuestaType.Success,
+        'background-warning-soft': tipoRespuesta === TipoRespuestaType.Error,
+        'background-error-soft': tipoRespuesta === TipoRespuestaType.Error,
+        'background-disabled': tipoRespuesta === TipoRespuestaType.Neutral,
+        'background-primary-2': tipoRespuesta === TipoRespuestaType.Primary,
+      }"
+    >
+      <span
+        azui-icons
+        [name]="iconos[tipoRespuesta!.toString()]"
+        class="m-auto"
+        [ngClass]="{
+          'text-success-hard': tipoRespuesta === TipoRespuestaType.Success,
+          'text-warning-hard': tipoRespuesta === TipoRespuestaType.Warning,
+          'text-error-hard': tipoRespuesta === TipoRespuestaType.Error,
+          'text-primary-5': tipoRespuesta === TipoRespuestaType.Primary,
+        }"
+      ></span>
+    </div>
+    <p>{{ descripcion }}</p>
+  </div>
+  <div class="flex" style="align-self: stretch" *ngIf="mostrarCerrar">
+    <div style="width: 1px" class="background-subordinate"></div>
+    <p class="text-description text-subordinate">Cerrar</p>
+  </div>
+</div>

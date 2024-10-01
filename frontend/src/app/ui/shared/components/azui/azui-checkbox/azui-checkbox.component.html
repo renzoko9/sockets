@@ -1,0 +1,26 @@
+<div
+  (click)="seleccionar()"
+  class="az-checkbox br-8 flex items-center gap-8 px-12 py-6"
+  [ngClass]="{
+    'az-checkbox__unselected': estaSeleccionado && label && !isDisabled,
+    'az-checkbox__selected': !estaSeleccionado,
+    'az-checkbox__disabled': isDisabled
+  }"
+>
+  <input
+    #check
+    type="checkbox"
+    [disabled]="isDisabled"
+    [checked]="estaSeleccionado"
+  />
+  <span azui-icons name="check" *ngIf="estaSeleccionado"></span>
+  <label
+    *ngIf="label"
+    [ngClass]="{
+      'text-subordinate': !estaSeleccionado && !isDisabled,
+      'text-primary-6': estaSeleccionado && !isDisabled,
+      'text-disabled': isDisabled
+    }"
+    >{{ label }}</label
+  >
+</div>

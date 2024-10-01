@@ -1,0 +1,57 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.azui-tooltip {
+  position: absolute;
+  background-color: tColors.$color-base;
+  color: tColors.$color-inverse;
+  padding: 5px 10px;
+  border-radius: 4px;
+  /* white-space: nowrap; */
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.azui-tooltip.show {
+  opacity: 1;
+}
+
+.azui-tooltip::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.azui-tooltip.top::after {
+  border-width: 8px 8px 0 8px;
+  border-color: tColors.$color-base transparent transparent transparent;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.azui-tooltip.bottom::after {
+  border-width: 0 8px 8px 8px;
+  border-color: transparent transparent tColors.$color-base transparent;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.azui-tooltip.left::after {
+  border-width: 8px 0 8px 8px;
+  border-color: transparent transparent transparent tColors.$color-base;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.azui-tooltip.right::after {
+  border-width: 8px 8px 8px 0;
+  border-color: transparent tColors.$color-base transparent transparent;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+}

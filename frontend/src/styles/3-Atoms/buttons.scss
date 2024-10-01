@@ -1,0 +1,206 @@
+@use "../1-Tokens/tokens-colors.scss" as tColors;
+@use "../1-Tokens/token-border-radius.scss" as tBorder;
+
+.az-button {
+  display: inline-flex;
+  gap: 8px;
+  border-radius: tBorder.$border-system;
+  transition: 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.az-button--disabled {
+  cursor: not-allowed;
+}
+
+.az-button > span[azui-icons] {
+  height: 16px;
+}
+
+.az-button[disabled] {
+  cursor: not-allowed;
+}
+
+.az-button-normal {
+  height: 42px;
+  padding: 8px 24px;
+}
+
+.az-button-icon {
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+}
+
+.az-button-link {
+  padding: 0;
+}
+
+@mixin azui-button(
+  $name,
+  $colorBackground,
+  $colorText,
+  $colorBorder,
+  $colorBackgroundHover,
+  $colorTextHover,
+  $colorBorderHover,
+  $colorBackgroundFocus,
+  $colorTextFocus,
+  $colorBorderFocus,
+  $colorBackgroundDisabled,
+  $colorTextDisabled,
+  $colorBorderDisabled,
+  $colorBackgroundDanger: red,
+  $colorTextDanger: red,
+  $colorBorderDanger: red
+) {
+  .az-button-#{$name} {
+    background-color: $colorBackground;
+    color: $colorText;
+    border: 1px solid $colorBorder;
+
+    &:hover {
+      background-color: $colorBackgroundHover;
+      color: $colorTextHover;
+      border-color: $colorBorderHover;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $colorBackgroundFocus;
+      color: $colorTextFocus;
+      border-color: $colorBorderFocus;
+      outline: none;
+    }
+  }
+
+  .az-button-#{$name}[disabled] {
+    background-color: $colorBackgroundDisabled;
+    color: $colorTextDisabled;
+    border: 1px solid $colorBorderDisabled;
+  }
+
+  .az-button-#{$name}__danger {
+    background-color: $colorBackgroundDanger;
+    color: $colorTextDanger;
+    border: 1px solid $colorBorderDanger;
+
+    &:hover {
+      background-color: $colorBackgroundDanger;
+      color: $colorTextDanger;
+      border-color: $colorBorderDanger;
+    }
+
+    &:active,
+    &:focus {
+      background-color: $colorBackgroundDanger;
+      color: $colorTextDanger;
+      border-color: $colorBorderDanger;
+      outline: none;
+    }
+  }
+}
+
+@include azui-button(
+  "primary",
+  tColors.$color-primary-5,
+  tColors.$color-inverse,
+  tColors.$color-primary-5,
+  tColors.$color-primary-4,
+  tColors.$color-inverse,
+  tColors.$color-primary-4,
+  tColors.$color-primary-6,
+  tColors.$color-inverse,
+  transparent,
+  tColors.$color-primary-2,
+  tColors.$color-inverse,
+  transparent,
+  tColors.$color-danger-hard,
+  tColors.$color-inverse,
+  transparent
+);
+
+@include azui-button(
+  "neutral",
+  transparent,
+  tColors.$color-subordinate,
+  transparent,
+  transparent,
+  tColors.$color-base,
+  transparent,
+  tColors.$color-subordinate,
+  tColors.$color-inverse,
+  tColors.$color-subordinate,
+  tColors.$color-disabled,
+  tColors.$color-inverse,
+  transparent
+);
+
+@include azui-button(
+  "outlined",
+  tColors.$color-inverse,
+  tColors.$color-primary-5,
+  tColors.$color-primary-2,
+  tColors.$color-inverse,
+  tColors.$color-primary-5,
+  tColors.$color-primary-3,
+  tColors.$color-inverse,
+  tColors.$color-primary-6,
+  tColors.$color-primary-4,
+  tColors.$color-inverse,
+  tColors.$color-primary-2,
+  tColors.$color-primary-2,
+  tColors.$color-inverse,
+  tColors.$color-danger-hard,
+  tColors.$color-danger-medium
+);
+
+@include azui-button(
+  "secondary",
+  tColors.$color-inverse,
+  tColors.$color-subordinate,
+  transparent,
+  tColors.$color-inverse,
+  tColors.$color-primary-6,
+  transparent,
+  tColors.$color-primary-1,
+  tColors.$color-base,
+  transparent,
+  tColors.$color-inverse,
+  tColors.$color-disabled,
+  transparent
+);
+
+@include azui-button(
+  "link",
+  transparent,
+  tColors.$color-primary-5,
+  transparent,
+  transparent,
+  tColors.$color-primary-4,
+  transparent,
+  transparent,
+  tColors.$color-primary-6,
+  transparent,
+  tColors.$color-inverse,
+  tColors.$color-primary-2,
+  transparent
+);
+
+@include azui-button(
+  "text",
+  transparent,
+  tColors.$color-primary-4,
+  transparent,
+  tColors.$color-primary-1,
+  tColors.$color-primary-5,
+  transparent,
+  tColors.$color-primary-2,
+  tColors.$color-primary-6,
+  transparent,
+  transparent,
+  tColors.$color-disabled,
+  transparent
+);

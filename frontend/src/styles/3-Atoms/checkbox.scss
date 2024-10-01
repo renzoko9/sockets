@@ -1,0 +1,54 @@
+@use '../1-Tokens/tokens-colors.scss' as tColors;
+
+.az-checkbox {
+  height: 38px;
+  width: fit-content;
+  position: relative;
+}
+
+.az-checkbox__unselected {
+  background: tColors.$color-secondary-first-soft;
+}
+
+.az-checkbox__disabled {
+  pointer-events: none;
+}
+
+.az-checkbox__selected:hover > input[type='checkbox'] {
+  border: 2px solid tColors.$color-primary-5;
+}
+
+.az-checkbox__selected:hover {
+  background: tColors.$color-primary-1;
+}
+
+.az-checkbox__selected:hover > label {
+  color: tColors.$color-primary-5;
+}
+
+.az-checkbox > input[type='checkbox'] {
+  height: 16px;
+  width: 16px;
+  padding: 6px;
+  appearance: none;
+  border: 2px solid tColors.$color-disabled;
+  background: tColors.$color-inverse;
+  border-radius: 2px;
+
+  &:not(:disabled):checked {
+    background: tColors.$color-primary-5;
+    border: none;
+  }
+
+  &:disabled {
+    background: tColors.$color-disabled;
+  }
+}
+
+.az-checkbox > span[azui-icons] {
+  position: absolute;
+  margin-top: 1.5px;
+  margin-left: 2.4px;
+  font-size: 11px;
+  color: tColors.$color-inverse;
+}

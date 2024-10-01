@@ -1,0 +1,36 @@
+:host
+  ::ng-deep
+  .ant-collapse-ghost
+  > .ant-collapse-item
+  > .ant-collapse-content {
+  border-top: none;
+  margin-top: 0;
+}
+
+:host
+  ::ng-deep
+  .ant-collapse
+  > .ant-collapse-item.ant-collapse-no-arrow
+  > .ant-collapse-header {
+  padding: 0;
+  border-bottom: 0;
+}
+
+:host ::ng-deep .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+  padding: 0;
+}
+
+:host ::ng-deep .ant-collapse-content > .ant-collapse-content-box {
+  padding-top: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
+  padding-bottom: 0 !important;
+}
+
+.filtros-cerrado {
+  padding-top: 0;
+}
+
+.filtros-abierto {
+  padding-top: 16px;
+}

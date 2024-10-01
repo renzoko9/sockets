@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+@use "styles/general/general.scss";
+@use "styles/2-Base/resets/reset.scss";
+@use "styles/2-Base/classes/classes-border-radius.scss";
+@use "styles/2-Base/classes/classes-paddings.scss";
+@use "styles/2-Base/classes/classes-flex.scss";
+@use "styles/2-Base/classes/classes-layouts.scss";
+@use "styles/2-Base/classes/classes-texts.scss";
+@use "styles/2-Base/classes/classes-colors.scss";
+@use "styles/3-Atoms/buttons.scss";

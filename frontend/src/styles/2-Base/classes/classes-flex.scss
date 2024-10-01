@@ -1,0 +1,89 @@
+@use '../../1-Tokens/tokens-spacing.scss' as tSpacings;
+
+@mixin gap-classes($name, $gapSize) {
+  .gap-#{$name} {
+    gap: $gapSize;
+  }
+  .row-gap-#{$name} {
+    row-gap: $gapSize;
+  }
+  .col-gap-#{$name} {
+    column-gap: $gapSize;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse;
+}
+
+.flex-no-wrap {
+  flex-wrap: nowrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.item-self-start {
+  align-self: flex-start;
+}
+
+.item-self-center {
+  align-self: center;
+}
+
+.item-self-end {
+  align-self: flex-end;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.m-auto {
+  margin: auto;
+}
+
+.expanded {
+  flex: 1 1;
+}
+
+@include gap-classes('4', tSpacings.$spacing4);
+@include gap-classes('8', tSpacings.$spacing8);
+@include gap-classes('12', tSpacings.$spacing12);
+@include gap-classes('16', tSpacings.$spacing16);
+@include gap-classes('24', tSpacings.$spacing24);
+@include gap-classes('40', tSpacings.$spacing40);

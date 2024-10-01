@@ -1,0 +1,63 @@
+// █▀▀ █▀█ █░░ █▀█ █▀█ █▀
+// █▄▄ █▄█ █▄▄ █▄█ █▀▄ ▄█
+
+/*
+===== NEUTRALS =====
+*/
+// BASE COLOR
+$color-base: #203152;
+// SUBORDINATE COLOR
+$color-subordinate: #8f98a8;
+// DISABLED COLOR
+$color-disabled: #d9dce2;
+// INVERSE COLOR
+$color-inverse: #fafcfe;
+
+// PRIMARY COLOR
+$color-primary-1: #f0f6f9; /* TINTS */
+$color-primary-2: #d2e6ee;
+$color-primary-3: #a6cedd;
+$color-primary-4: #7ab5cc;
+$color-primary-5: #4e9dbc; /* BASE */
+$color-primary-6: #3a758d;
+$color-primary-7: #274e5e;
+$color-primary-8: #13272f;
+$color-primary-9: #0b181d; /* SHADOWS */
+
+// TRANSPARENCIES PRIMARY COLOR
+$transparency-inverse-40: rgba(250, 252, 254, 0.4);
+$transparency-primary-60: rgba(9, 127, 173, 0.6);
+
+// GRADIENT
+$gradiente: linear-gradient(180deg, rgba(235,238,242,1) 0%, rgba(222,229,240,1) 100%);
+
+// SEMANTIC COLORS
+$color-success-soft: #ecf6e2;
+$color-success-medium: #c8e6aa;
+$color-success-hard: #91ce55;
+$color-warning-soft: #fcf3e4;
+$color-warning-medium: #f6dcae;
+$color-warning-hard: #edb95e;
+$color-danger-soft: #fadddd;
+$color-danger-medium: #f09a9a;
+$color-danger-hard: #e23636;
+
+// SECONDARY COLORS
+$color-secondary-first-soft: #f6f8f9;
+$color-secondary-first-medium: #e4ebef;
+$color-secondary-first-hard: #cad7e0;
+
+$color-secondary-second-soft: #ffe9e5;
+$color-secondary-second-medium: #ffbeb1;
+$color-secondary-second-hard: #ff7e63;
+
+$color-secondary-third-soft: #e3e9f6;
+$color-secondary-third-medium: #adbee4;
+$color-secondary-third-hard: #5c7dca;
+
+// SPECIAL COLORS
+$white-transparency: rgba(255, 255, 255, 0.5);
+
+// SYSTEM COLORS
+$color-light: #f1f5f9;
+$color-dark: #0e1e49;

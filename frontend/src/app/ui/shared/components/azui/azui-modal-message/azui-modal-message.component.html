@@ -1,0 +1,153 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel(false)"
+  [nzClosable]="false"
+  [nzMaskClosable]="
+    !mensajeModal?.autoClose && mensajeModal?.tipo !== 'loading'
+  "
+  [nzCentered]="true"
+  [nzStyle]="{
+    width: 'calc(100% - 48px)',
+    'max-width':'300px',
+    'padding-bottom': '40px',
+    top: '40px',
+  }"
+  (nzAfterOpen)="handleOpen()"
+  [nzAutofocus]="null"
+  [nzTitle]="undefined"
+  [nzFooter]="null"
+>
+  <ng-container *nzModalContent>
+    <div #helper style="display: none"></div>
+    <div class="flex-column gap-40" *ngIf="mensajeModal">
+      <ng-container [ngSwitch]="mensajeModal.tipo">
+        <!-- SUCCESS -->
+        <ng-container *ngSwitchCase="'success'">
+          <div class="flex-column gap-24 items-center">
+            <div
+              class="background-success-soft border-success-soft text-success-hard br-50 flex"
+              style="height: 100px; width: 100px"
+            >
+              <span azui-icons name="check" class="size-icon m-auto"></span>
+            </div>
+
+            <div class="flex-column gap-8 text-center">
+              <h5>¡Listo!</h5>
+              <p>{{ mensajeModal.mensaje }}</p>
+            </div>
+          </div>
+
+          <button
+            *ngIf="!mensajeModal.autoClose"
+            azui-button
+            (click)="handleCancel(false)"
+            class="flex item-self-center"
+          >
+            Entendido
+          </button>
+
+          <svg
+            width="40"
+            height="40"
+            viewBox="0 0 40 40"
+            class="az-modal-message-spinner item-self-center"
+            *ngIf="mensajeModal.autoClose"
+          >
+            <circle class="bg"></circle>
+            <circle class="fg"></circle>
+          </svg>
+        </ng-container>
+
+        <!-- ERROR -->
+        <ng-container *ngSwitchCase="'error'">
+          <div class="flex-column gap-24 items-center">
+            <div
+              class="background-danger-soft text-danger-hard br-50 flex"
+              style="height: 100px; width: 100px"
+            >
+              <span azui-icons name="equis" class="size-icon m-auto"></span>
+            </div>
+
+            <div class="flex-column gap-8 text-center">
+              <h5>¡Oh, no!</h5>
+              <p>{{ mensajeModal.mensaje }}</p>
+            </div>
+          </div>
+
+          <button
+            azui-button
+            (click)="handleCancel(false)"
+            class="flex w100item-self-center"
+          >
+            Entendido
+          </button>
+        </ng-container>
+
+        <!-- WARNING -->
+        <ng-container *ngSwitchCase="'warning'">
+          <div class="flex-column gap-24 items-center">
+            <div
+              class="background-warning-soft text-warning-hard br-50 flex"
+              style="height: 100px; width: 100px"
+            >
+              <span azui-icons name="alerta" class="size-icon m-auto"></span>
+            </div>
+
+            <div class="flex-column gap-8 text-center">
+              <h5>Atención!</h5>
+              <p>{{ mensajeModal.mensaje }}</p>
+            </div>
+          </div>
+          <div class="flex-column gap-8">
+            <button
+              azui-button
+              (click)="handleCancel(true)"
+            >
+              <span azui-icons name="entendido"></span
+              >{{ mensajeModal.textoOk ?? 'Sí' }}
+            </button> 
+            <button
+              azui-button
+              tipo="outlined"
+              (click)="handleCancel(false)"
+            >
+              <span azui-icons name="no-quiero"></span
+              >{{ mensajeModal.textoCancelar ?? 'No' }}
+            </button>
+          </div>
+        </ng-container>
+
+        <!-- LOADING -->
+        <ng-container *ngSwitchCase="'loading'">
+          <div class="flex-column gap-24 items-center">
+            <div
+              class="background-primary-2 text-primary-5 br-50 flex"
+              style="height: 100px; width: 100px"
+            >
+              <span
+                azui-icons
+                name="portal-quipu"
+                class="size-icon m-auto"
+              ></span>
+            </div>
+
+            <div class="flex-column gap-8 text-center">
+              <h5>¡Un momento!</h5>
+              <p>{{ mensajeModal.mensaje }}</p>
+            </div>
+          </div>
+          <div
+            class="flex"
+            style="height: 50px; max-height: 50px; overflow: hidden"
+          >
+            <span
+              azui-icons
+              name="cargando"
+              class="text-primary-5 spinner-animation m-auto"
+            ></span>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+  </ng-container>
+</nz-modal>

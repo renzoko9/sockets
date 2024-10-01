@@ -1,0 +1,10 @@
+<!--  -->
+<div class="background-inverse br-8 border-primary-2 px-8 az-textarea"
+[ngClass]="{
+  'border-primary-4': hasFocus,
+  'az-textarea__disabled': isDisabled,
+  'az-textarea__error': !isDisabled && hasError,
+}">
+  <ng-content></ng-content>
+  <label>{{ label }}</label>
+</div>

@@ -1,0 +1,53 @@
+<!-- TIENE OPCIONES -->
+<div
+  #select
+  class="az-select-item flex items-center background-inverse p-8 br-8"
+  [ngStyle]="azStyle"
+  [ngClass]="{ 'border-primary-2': lugar === 'normal' }"
+  nz-popover
+  nzPopoverTrigger="click"
+  [(nzPopoverVisible)]="popoverAbierto"
+  [nzPopoverContent]="contenidoPopover"
+  [nzPopoverPlacement]="placement"
+  *ngIf="tieneOpciones"
+>
+  <ng-container *ngTemplateOutlet="contenidoSelect"></ng-container>
+</div>
+
+<!-- NO TIENE OPCIONES -->
+<div
+  #select
+  class="az-select-item flex items-center background-inverse p-8 br-8"
+  [ngStyle]="azStyle"
+  [ngClass]="{ 'border-primary-2': lugar === 'normal' }"
+  *ngIf="!tieneOpciones"
+>
+  <ng-container *ngTemplateOutlet="contenidoSelect"></ng-container>
+</div>
+
+<ng-template #contenidoSelect>
+  <ng-container *ngIf="icono">
+    <span azui-icons [name]="icono" class="text-primary-5"></span>
+  </ng-container>
+  <div class="expanded min-w0">
+    <p
+      class="px-8 text-ellipsis"
+      [title]="etiquetaSeleccionada || placeholder"
+      [ngClass]="{
+      'text-subordinate': lugar !== 'body-filtros' && !valorSeleccionado,
+      'text-base': lugar !== 'body-filtros' && valorSeleccionado,
+      'text-primary-4': lugar === 'body-filtros' && !valorSeleccionado,
+      'text-primary-5': lugar === 'body-filtros' && valorSeleccionado,
+      }"
+    >
+      {{ etiquetaSeleccionada || placeholder }}
+    </p>
+  </div>
+  <span azui-icons name="abajo" class="text-disabled"></span>
+</ng-template>
+
+<ng-template #contenidoPopover>
+  <div #contentPopover class="flex-column gap-8 p-8" [ngStyle]="{ width}">
+    <ng-content></ng-content>
+  </div>
+</ng-template>
