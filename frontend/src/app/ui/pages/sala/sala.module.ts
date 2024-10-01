@@ -7,11 +7,13 @@ import { AzuiButton } from '../../shared/components/azui/azui-button/azui-button
 import { AzuiInputModule } from '../../shared/components/azui/azui-input/azui-input.module';
 import { AzuiIcons } from '../../shared/components/azui/azui-icons/azui-icons.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { PizarraComponent } from './components/pizarra/pizarra.component';
 
 
 @NgModule({
   declarations: [
-    SalaComponent
+    SalaComponent,
+    PizarraComponent
   ],
   imports: [
     CommonModule,

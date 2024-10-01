@@ -1,0 +1,19 @@
+<!-- PIZARRA -->
+<article class="flex-column expanded">
+  <!-- HEADER -->
+  <section
+    class="flex gap-12 justify-center items-center background-secondary-first-medium border-primary-3 p-24 br-tl-16 br-tr-16"
+  >
+    <p>Tema:</p>
+    <h5 class="text-primary-5">COCINA DE BARRO</h5>
+  </section>
+  <!-- ZONA DE DIBUJO -->
+  <section
+    class="flex br-bl-16 br-br-16 h100 background-inverse border-primary-3"
+  >
+    <canvas id="canvasId" #canvasRef></canvas>
+  </section>
+  <button azui-button class="az-button-primary" (click)="clearZone()">
+    <p>Limpiar</p>
+  </button>
+</article>
