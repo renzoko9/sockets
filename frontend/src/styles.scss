@@ -8,3 +8,17 @@
 @use "styles/2-Base/classes/classes-texts.scss";
 @use "styles/2-Base/classes/classes-colors.scss";
 @use "styles/3-Atoms/buttons.scss";
+@use 'styles/3-Atoms/checkbox.scss';
+@use 'styles/3-Atoms/error.scss';
+@use 'styles/3-Atoms/input.scss';
+@use 'styles/3-Atoms/input-number.scss';
+@use 'styles/3-Atoms/radio.scss';
+@use 'styles/3-Atoms/select.scss';
+@use 'styles/3-Atoms/table.scss';
+@use 'styles/3-Atoms/textarea.scss';
+@use 'styles/3-Atoms/tooltip.scss';
+@use 'styles/3-Atoms/radio-button.scss';
+@use 'styles/3-Atoms/toggle.scss';
+@use 'styles/3-Atoms/modal-message.scss';
+@use 'styles/3-Atoms/pagination.scss';
+@use 'styles/3-Atoms/file-upload.scss';

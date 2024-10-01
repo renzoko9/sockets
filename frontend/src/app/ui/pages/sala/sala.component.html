@@ -1,0 +1,55 @@
+<section class="flex gap-16 h100">
+  <!-- INTEGRANTES DE LA SALA -->
+  <article
+    class="flex-column gap-12 p-24 br-16 background-inverse border-primary-3"
+    style="min-width: 200px; height: fit-content;"
+  >
+    <div class="flex-column gap-12" *ngFor="let usuario of [1, 1, 1, 1, 1]">
+      <div class="flex justify-space-between items-center">
+        <p>RENZO</p>
+        <span class="p-4 background-success-hard br-24"></span>
+      </div>
+      <div class="divider"></div>
+    </div>
+  </article>
+  <!-- PIZARRA -->
+  <article class="flex-column expanded">
+    <!-- HEADER -->
+    <section
+      class="flex gap-12 justify-center items-center background-secondary-first-medium border-primary-3 p-24 br-tl-16 br-tr-16"
+    >
+      <p>Tema:</p>
+      <h5 class="text-primary-5">COCINA DE BARRO</h5>
+    </section>
+    <!-- ZONA DE DIBUJO -->
+    <section
+      class="flex p-24 br-bl-16 br-br-16 h100 background-inverse border-primary-3"
+    ></section>
+  </article>
+  <!-- CHAT -->
+  <article
+    class="flex-column gap-12 p-24 background-inverse border-primary-3 br-16"
+    style="min-width: 320px;"
+  >
+    <p class="text-subordinate">Chat de la sala</p>
+    <span class="divider"></span>
+    <!-- MENSAJES -->
+    <section class="h100"></section>
+    <!-- INPUT -->
+    <div class="flex"></div>
+    <azui-input-group [suffixRef]="enviar">
+      <input type="text" azui-input maxlength="75" />
+    </azui-input-group>
+
+    <ng-template #enviar>
+      <button
+        type="button"
+        azui-button
+        class="az-button-primary"
+        contenido="icono"
+      >
+        <span azui-icons name="derecha"></span>
+      </button>
+    </ng-template>
+  </article>
+</section>

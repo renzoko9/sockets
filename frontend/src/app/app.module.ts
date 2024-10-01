@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AzuiButton } from './ui/shared/components/azui/azui-button/azui-button.directive';
 
 @NgModule({
   declarations: [
@@ -11,8 +9,7 @@ import { AzuiButton } from './ui/shared/components/azui/azui-button/azui-button.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    AzuiButton
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
