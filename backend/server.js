@@ -16,10 +16,10 @@ io.on("connection", function (socket) {
   socket.join(token);
   console.log(`Nuevo dispositivo: ${handshake}, se ha unido a ${token}`);
 
-  socket.on("event", (res) => {
+  socket.on(token, (res) => {
     console.log(res)
     // Emite el mensaje a todos lo miembros de las sala menos a la persona que envia el mensaje
-    socket.to(token).emit("event", res);
+    socket.to(token).emit(token, res);
   });
 
   socket.on("disconnect", function () {

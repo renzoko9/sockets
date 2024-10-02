@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IPuntos } from 'src/app/providers/root.provider';
 import { SocketWebService } from 'src/app/services/socket-web.service';
 
 @Component({
@@ -38,9 +39,13 @@ export class PizarraComponent {
     private router: ActivatedRoute
   ) {
     this.room = router.snapshot.params['room']
-    this.socketWebService.callbackTrazo.subscribe((res) => {
-      const { prevPost } = res;
-      this.writeSingle(prevPost, false);
+    // this.socketWebService.callbackTrazo.subscribe((res) => {
+    //   const { prevPost } = res;
+    //   this.writeSingle(prevPost, false);
+    // });
+    this.socketWebService.listen<IPuntos>(this.room).subscribe((res) => {
+      console.log(res);
+      this.writeSingle(res, false);
     });
   }
 

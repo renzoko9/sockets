@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { IPuntos } from 'src/app/providers/root.provider';
 import { SocketWebService } from 'src/app/services/socket-web.service';
 
 @Component({
@@ -21,8 +20,5 @@ export class SalaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.socketWebService.listen<IPuntos>(this.room).subscribe((res) => {
-      console.log(res);
-    });
   }
 }
