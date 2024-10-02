@@ -1,22 +1,25 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
+app.use(cors());
+const options = {
+  cors: {
+    origin: "http://localhost:7272",
+  },
+};
 const server = require("http").Server(app);
-const io = require("socket.io")(server);
+const io = require("socket.io")(server, options);
 
 io.on("connection", function (socket) {
   const handshake = socket.id;
+  let { token } = socket.handshake.query;
+  socket.join(token);
+  console.log(`Nuevo dispositivo: ${handshake}, se ha unido a ${token}`);
 
-  let { nameRoom } = socket.handshake.query;
-  console.log(
-    `${chalk.green(
-      `Nuevo dispositivo: ${handshake}`
-    )} conectado a la ${nameRoom}`
-  );
-  socket.join(nameRoom);
-
-  socket.on("evento", (res) => {
+  socket.on("event", (res) => {
+    console.log(res)
     // Emite el mensaje a todos lo miembros de las sala menos a la persona que envia el mensaje
-    socket.to(nameRoom).emit("evento", res);
+    socket.to(token).emit("event", res);
   });
 
   socket.on("disconnect", function () {
@@ -26,7 +29,5 @@ io.on("connection", function (socket) {
 
 server.listen(5000, function () {
   console.log("\n");
-  console.log(
-    `>> Socket listo y escuchando por el puerto: ${chalk.green("5000")}`
-  );
+  console.log(`>> Socket listo y escuchando por el puerto: ${"5000"}`);
 });

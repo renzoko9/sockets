@@ -1,4 +1,5 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { SocketWebService } from 'src/app/services/socket-web.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class PizarraComponent {
   private points: Array<any> = [];
 
   public isAvailabe: boolean = false;
+  public room: string;
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove = (e: any) => {
@@ -31,11 +33,15 @@ export class PizarraComponent {
       this.isAvailabe = !this.isAvailabe;
     }
   };
-  constructor(private socketWebService: SocketWebService) {
-    // this.socketWebService.outEven.subscribe((res) => {
-    //   const { prevPost } = res;
-    //   this.writeSingle(prevPost, false);
-    // });
+  constructor(
+    private socketWebService: SocketWebService,
+    private router: ActivatedRoute
+  ) {
+    this.room = router.snapshot.params['room']
+    this.socketWebService.callbackTrazo.subscribe((res) => {
+      const { prevPost } = res;
+      this.writeSingle(prevPost, false);
+    });
   }
 
   ngOnInit(): void {}
@@ -70,8 +76,9 @@ export class PizarraComponent {
       const currentPost = this.points[this.points.length - 2];
 
       this.drawOnCanvas(prevPost, currentPost);
+      // Emitir a un determinado 'room'
       if (emit) {
-        // this.socketWebService.emitEvent({ prevPost });
+        this.socketWebService.emitEventTrazo(this.room, prevPost);
       }
     }
   }
@@ -90,5 +97,6 @@ export class PizarraComponent {
   public clearZone = () => {
     this.points = [];
     this.cx.clearRect(0, 0, this.width, this.height);
+    this.socketWebService.callbackTrazo.emit(this.points);
   };
 }

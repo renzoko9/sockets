@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { IPuntos } from 'src/app/providers/root.provider';
+import { SocketWebService } from 'src/app/services/socket-web.service';
 
 @Component({
   selector: 'app-sala',
@@ -11,13 +13,16 @@ export class SalaComponent implements OnInit {
   public room: string;
   constructor(
     private router: ActivatedRoute,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private socketWebService: SocketWebService
   ) {
-    this.room = '';
+    this.room = this.router.snapshot.params['room'];
+    this.cookieService.set('room', this.room);
   }
 
   ngOnInit(): void {
-    this.room = this.router.snapshot.params['room'];
-    this.cookieService.set('room', this.room);
+    this.socketWebService.listen<IPuntos>(this.room).subscribe((res) => {
+      console.log(res);
+    });
   }
 }
