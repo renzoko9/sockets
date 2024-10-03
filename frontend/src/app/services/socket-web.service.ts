@@ -42,7 +42,7 @@ export class SocketWebService {
     });
   }
 
-  public emitEvent = (event: string, mensaje: IMensaje | IPuntos | string) => {
+  public emitEvent = (event: string, mensaje: IMensaje | IPuntos | string | null) => {
     this.socket?.emit(event, mensaje);
   };
 

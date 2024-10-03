@@ -9,10 +9,12 @@ import { SocketWebService } from 'src/app/services/socket-web.service';
 })
 export class ConectadosComponent implements OnInit {
   public usuariosConectados: string[] = [];
+  public user!: string;
   constructor(private socketService: SocketWebService) {}
 
   ngOnInit(): void {
-    this.usuariosConectados.push(sessionStorage.getItem('user')!);
+    this.user = sessionStorage.getItem('user')!;
+    this.usuariosConectados.push(this.user);
     this.socketService
       .listen<string>(ENDPOINTS.notificaciones.socket.usuarios)
       .subscribe((res) => {

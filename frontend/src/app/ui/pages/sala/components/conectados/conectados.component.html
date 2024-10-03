@@ -4,7 +4,12 @@
 >
   <div class="flex-column gap-12" *ngFor="let usuario of usuariosConectados">
     <div class="flex justify-space-between items-center">
-      <p>{{ usuario }}</p>
+      <span>
+        {{ usuario }}
+        <span class="text-subordinate">{{
+          usuario === user ? "(Yo)" : ""
+        }}</span>
+      </span>
       <span class="p-4 background-success-hard br-24"></span>
     </div>
     <div class="divider"></div>

@@ -46,6 +46,10 @@ export class PizarraComponent {
     this.socketWebService
       .listen<IPuntos>(ENDPOINTS.notificaciones.socket.puntos)
       .subscribe((res) => {
+        if (!res) {
+          this.points = [];
+          this.cx.clearRect(0, 0, this.width, this.height);
+        }
         this.writeSingle(res, false);
       });
   }
@@ -101,6 +105,6 @@ export class PizarraComponent {
   public clearZone = () => {
     this.points = [];
     this.cx.clearRect(0, 0, this.width, this.height);
-    this.socketWebService.callbackTrazo.emit(this.points);
+    this.socketWebService.emitEvent('puntos', null);
   };
 }
