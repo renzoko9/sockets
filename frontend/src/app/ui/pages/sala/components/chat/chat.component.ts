@@ -14,17 +14,15 @@ export class ChatComponent implements OnInit {
   public usuario: string = '';
   public mensajes: IMensaje[] = [];
 
-  constructor(private socketWebService: SocketWebService) {
-    this.socketWebService
-      .listen<IMensaje>(ENDPOINTS.notificaciones.socket.mensaje)
-      .subscribe((res) => {
-        console.log(res);
-        this.mensajes.push(res);
-      });
-  }
+  constructor(private socketWebService: SocketWebService) {}
 
   ngOnInit(): void {
     this.usuario = sessionStorage.getItem('user')!;
+    this.socketWebService
+      .listen<IMensaje>(ENDPOINTS.notificaciones.socket.mensaje)
+      .subscribe((res) => {
+        this.mensajes.push(res);
+      });
   }
 
   enviarMensaje() {
@@ -33,7 +31,7 @@ export class ChatComponent implements OnInit {
       usuario: this.usuario,
     };
     this.socketWebService.emitEvent('mensaje', mensajeEmit);
-    this.mensajes.push(mensajeEmit)
+    this.mensajes.push(mensajeEmit);
     this.mensaje.patchValue('');
   }
 }

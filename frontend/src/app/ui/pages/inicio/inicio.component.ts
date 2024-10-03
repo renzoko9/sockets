@@ -22,7 +22,6 @@ import { SocketWebService } from 'src/app/services/socket-web.service';
 export class InicioComponent {
   public idSala: string = 'sala-1647';
   public nick: FormControl<string | null | undefined> = new FormControl(null);
-  private socketWebService = inject(SocketWebService);
   private route = inject(Router);
 
   public ingresarSala() {

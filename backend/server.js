@@ -16,6 +16,14 @@ io.on("connection", function (socket) {
   socket.join(token);
   console.log(`Nuevo dispositivo: ${handshake}, se ha unido a ${token}`);
 
+  // Escuchar eventos de tipo "usuarios"
+  socket.on("usuarios", (data) => {
+    console.log(`Se ha unido en la sala ${token}:`, data);
+
+    // Emite los usuarios que se han conectado
+    socket.to(token).emit("usuarios", data);
+  });
+
   // Escuchar eventos de tipo "mensaje"
   socket.on("mensaje", (data) => {
     console.log(`Mensaje recibido en la sala ${token}:`, data);

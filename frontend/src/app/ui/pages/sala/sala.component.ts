@@ -17,10 +17,15 @@ export class SalaComponent implements OnInit, OnDestroy {
   ) {
     this.room = this.router.snapshot.params['room'];
     this.cookieService.set('room', this.room);
-    socketWebService.connect();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.socketWebService.connect();
+    this.socketWebService.emitEvent(
+      'usuarios',
+      sessionStorage.getItem('user')!
+    );
+  }
 
   ngOnDestroy(): void {
     this.socketWebService.disconnect();

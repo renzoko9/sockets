@@ -39,16 +39,16 @@ export class PizarraComponent {
     private socketWebService: SocketWebService,
     private router: ActivatedRoute
   ) {
-    this.room = router.snapshot.params['room'];
+    this.room = this.router.snapshot.params['room'];
+  }
+
+  ngOnInit(): void {
     this.socketWebService
       .listen<IPuntos>(ENDPOINTS.notificaciones.socket.puntos)
       .subscribe((res) => {
-        console.log(res);
         this.writeSingle(res, false);
       });
   }
-
-  ngOnInit(): void {}
   ngAfterViewInit(): void {
     this.render();
   }
