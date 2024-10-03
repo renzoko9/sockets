@@ -8,12 +8,17 @@ import { AzuiInputModule } from '../../shared/components/azui/azui-input/azui-in
 import { AzuiIcons } from '../../shared/components/azui/azui-icons/azui-icons.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { PizarraComponent } from './components/pizarra/pizarra.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { ConectadosComponent } from './components/conectados/conectados.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     SalaComponent,
-    PizarraComponent
+    PizarraComponent,
+    ChatComponent,
+    ConectadosComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +26,8 @@ import { PizarraComponent } from './components/pizarra/pizarra.component';
     AzuiButton,
     AzuiInputModule,
     AzuiIcons,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]
 })
 export class SalaModule { }

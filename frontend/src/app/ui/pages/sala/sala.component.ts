@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { SocketWebService } from 'src/app/services/socket-web.service';
@@ -8,7 +8,7 @@ import { SocketWebService } from 'src/app/services/socket-web.service';
   templateUrl: './sala.component.html',
   styleUrls: ['./sala.component.scss'],
 })
-export class SalaComponent implements OnInit {
+export class SalaComponent implements OnInit, OnDestroy {
   public room: string;
   constructor(
     private router: ActivatedRoute,
@@ -17,8 +17,12 @@ export class SalaComponent implements OnInit {
   ) {
     this.room = this.router.snapshot.params['room'];
     this.cookieService.set('room', this.room);
+    socketWebService.connect();
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.socketWebService.disconnect();
   }
 }

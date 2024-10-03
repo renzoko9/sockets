@@ -25,8 +25,6 @@ export class SocketWebService {
     });
 
     this.setupSocketEvents();
-    console.log("conectado")
-    // this.listen();
   }
 
   private setupSocketEvents() {
@@ -38,24 +36,14 @@ export class SocketWebService {
     });
   }
 
-  // listen = () => {
-  //   this.socket?.on('event', (res) => this.callback?.emit(res));
-  // };
-
   public listen<T>(room: string): Observable<T> {
     return new Observable<T>((observer) => {
       this.socket?.on(room, (res) => observer.next(res));
     });
   }
 
-  public emitEventTrazo = (room: string, trazo: IPuntos) => {
-    console.log(trazo)
-    this.socket?.emit(room, trazo);
-  };
-
-  public emitEventMensajes = (room: string, mensaje: IMensaje) => {
-    console.log(mensaje)
-    this.socket?.emit(room, mensaje);
+  public emitEvent = (event: string, mensaje: IMensaje | IPuntos | string) => {
+    this.socket?.emit(event, mensaje);
   };
 
   public disconnect() {

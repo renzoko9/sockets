@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ENDPOINTS } from 'src/app/core/constants/endpoints.constants';
 import { IPuntos } from 'src/app/providers/root.provider';
 import { SocketWebService } from 'src/app/services/socket-web.service';
 
@@ -38,15 +39,13 @@ export class PizarraComponent {
     private socketWebService: SocketWebService,
     private router: ActivatedRoute
   ) {
-    this.room = router.snapshot.params['room']
-    // this.socketWebService.callbackTrazo.subscribe((res) => {
-    //   const { prevPost } = res;
-    //   this.writeSingle(prevPost, false);
-    // });
-    this.socketWebService.listen<IPuntos>(this.room).subscribe((res) => {
-      console.log(res);
-      this.writeSingle(res, false);
-    });
+    this.room = router.snapshot.params['room'];
+    this.socketWebService
+      .listen<IPuntos>(ENDPOINTS.notificaciones.socket.puntos)
+      .subscribe((res) => {
+        console.log(res);
+        this.writeSingle(res, false);
+      });
   }
 
   ngOnInit(): void {}
@@ -81,9 +80,9 @@ export class PizarraComponent {
       const currentPost = this.points[this.points.length - 2];
 
       this.drawOnCanvas(prevPost, currentPost);
-      // Emitir a un determinado 'room'
+      // Emitir al room
       if (emit) {
-        this.socketWebService.emitEventTrazo(this.room, prevPost);
+        this.socketWebService.emitEvent('puntos', prevPost);
       }
     }
   }

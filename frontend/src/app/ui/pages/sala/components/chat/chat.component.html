@@ -1,0 +1,40 @@
+<article
+  class="flex-column gap-12 p-24 background-inverse border-primary-3 br-16 h100"
+  style="min-width: 320px"
+>
+  <p class="text-subordinate">Chat de la sala</p>
+  <span class="divider"></span>
+  <!-- MENSAJES -->
+  <section class="flex-column gap-8 h100 justify-end">
+    <div
+      class="flex-column px-8 py-4 br-8"
+      [ngClass]="{
+        'background-secondary-first-soft': usuario === mensaje.usuario,
+        'background-primary-2': usuario !== mensaje.usuario
+      }"
+      *ngFor="let mensaje of mensajes"
+    >
+      <small class="text-subordinate">{{
+        usuario === mensaje.usuario ? "Yo" : mensaje.usuario
+      }}</small>
+      <p>{{ mensaje.mensaje }}</p>
+    </div>
+  </section>
+  <!-- INPUT -->
+  <div class="flex"></div>
+  <azui-input-group [suffixRef]="enviar">
+    <input type="text" [formControl]="mensaje" azui-input />
+  </azui-input-group>
+
+  <ng-template #enviar>
+    <button
+      type="button"
+      azui-button
+      class="az-button-primary"
+      contenido="icono"
+      (click)="enviarMensaje()"
+    >
+      <span azui-icons name="derecha"></span>
+    </button>
+  </ng-template>
+</article>

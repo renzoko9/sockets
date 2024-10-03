@@ -28,10 +28,5 @@ export class InicioComponent {
   public ingresarSala() {
     sessionStorage.setItem('user', this.nick.value!);
     this.route.navigate([this.idSala]);
-    this.iniciarSockets();
-  }
-
-  public iniciarSockets() {
-    this.socketWebService.connect();
   }
 }

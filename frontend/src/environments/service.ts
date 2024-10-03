@@ -4,4 +4,7 @@ export const SERVICES = Object.freeze({
     prefijo: '/ms-notificaciones/socket.io',
     prefijoHttp: '/ms-notificaciones',
   },
+  apiGateway: {
+    url: 'http://localhost:5000'
+  }
 });
